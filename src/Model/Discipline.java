@@ -1,6 +1,6 @@
 package Model;
 
-public class Discipline {
+public class Discipline implements Save{
     private String name;
 
     public Discipline(String name) {
@@ -13,5 +13,11 @@ public class Discipline {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public String save() {
+        return this.name;
     }
 }

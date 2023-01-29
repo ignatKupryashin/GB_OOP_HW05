@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Group {
+public class Group implements Save{
 
     private HashSet<Integer> groupList;
 
@@ -31,4 +31,14 @@ public class Group {
         groupList.remove(memberId);
     }
 
+    @Override
+    public String save() {
+        StringBuilder sb = new StringBuilder();
+        for (int item:groupList
+             ) {
+            sb.append(item);
+            sb.append(", ");
+        }
+        return sb.toString();
+    }
 }

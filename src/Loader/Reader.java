@@ -4,6 +4,8 @@ import DB.DBApi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Reader {
     BufferedReader bufferedReader;
@@ -14,7 +16,7 @@ public class Reader {
     public Reader(String filename, DBApi dbApi) throws Exception{
         this.filename = filename;
         this.dbApi = dbApi;
-        this.bufferedReader = new BufferedReader(new FileReader(filename));
+        if (Files.exists(Path.of(filename))){this.bufferedReader = new BufferedReader(new FileReader(filename));}
         this.parser = new Parser(dbApi);
     }
 

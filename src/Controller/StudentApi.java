@@ -4,6 +4,7 @@ import Model.*;
 
 import java.text.DateFormat;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class StudentApi {
     private DBApi dataApi;
@@ -56,9 +57,13 @@ public class StudentApi {
 
 
     public void setHomeWork(int idLesson, String homeworkText){
+
         if (dataApi.homeWorkExists(id, idLesson)){
-         //нужен поиск id домашки
-        }
+            HashMap<Integer, Homework> studentHomework = filter.filterHomework(id, idLesson);
+            int homeworkId = (Integer) studentHomework.keySet().toArray()[0];
+            dataApi.getHomework(homeworkId).setHomeWorkText(homeworkText);
+            }
+
         else {
             dataApi.setHomework(new Homework(id, idLesson, homeworkText));
         }

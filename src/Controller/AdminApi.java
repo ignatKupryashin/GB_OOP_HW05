@@ -27,7 +27,7 @@ public class AdminApi {
         HashMap<Integer, Person> persons = dataApi.getAllPersons();
         for (Integer id:persons.keySet()
              ) {
-            sb.append(String.format("%d - %s %s -- login: %s\n"));
+            sb.append(String.format("%d - %s %s\n", id, persons.get(id).getName(), persons.get(id).getSurname()));
         }
         return sb.toString();
     }

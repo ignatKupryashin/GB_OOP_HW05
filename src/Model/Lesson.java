@@ -1,8 +1,11 @@
 package Model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-public class Lesson{
+public class Lesson implements Save{
     private Date lessonDateTime;
     private int groupId;
     private int disciplineId;
@@ -54,6 +57,13 @@ public class Lesson{
 
     public void setHomeTask(String homeTask) {
         this.homeTask = homeTask;
+    }
+
+    @Override
+    public String save() {
+        DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+        String date = df.format(this.lessonDateTime);
+        return String.format("%s - %d - %d - %d - %s", date, this.groupId, this.disciplineId, this.teacherId, getHomeTask());
     }
 }
 

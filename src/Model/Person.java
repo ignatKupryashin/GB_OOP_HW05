@@ -1,6 +1,6 @@
 package Model;
 
-public class Person {
+public class Person implements Save{
     private String password;
     private String name;
     private String surname;
@@ -45,5 +45,10 @@ public class Person {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    @Override
+    public String save() {
+        return String.format("%s - %s - %s - %d", password, name, surname, role);
     }
 }

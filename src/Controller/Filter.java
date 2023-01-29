@@ -44,6 +44,7 @@ public class Filter {
         return filter;
     }
 
+
     public Integer filterGroup(int idStudent){
         HashMap<Integer, Group> filter = api.getAllGroups();
         int answer = -1;

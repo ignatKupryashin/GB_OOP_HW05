@@ -4,9 +4,7 @@ import DB.DBApi;
 import Model.Person;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 public class Loader {
 
@@ -32,10 +30,9 @@ public class Loader {
         createLessons(lessons);
         createDisciplines(disciplines);
         createHomeworks(homeworks);
+        createGroups(groups);
 
     }
-
-
 
     private boolean createTable(String filename) throws Exception{
         File file = new File(filename);
@@ -45,14 +42,13 @@ public class Loader {
 
     private void createPersons(String filename) throws Exception{
         Reader reader = new Reader(filename, dbApi);
-        if (!createTable(lessons)){
-            reader.loadLessons();
+        if (!createTable(persons)){
+            reader.loadPersons();
         }
         else {
-                dbApi.addPerson(0, new Person("admin", "admin", "admin", 1))}
+                dbApi.addPerson(0, new Person("0", "0", "0", 1));
+        }
     }
-
-
 
     private void createLessons(String filename) throws Exception{
         Reader reader = new Reader(filename, dbApi);
@@ -63,21 +59,23 @@ public class Loader {
 
     private void createDisciplines(String filename) throws Exception{
         Reader reader = new Reader(filename, dbApi);
-        if (!createTable(lessons)){
+        if (!createTable(disciplines)){
             reader.loadDisciplines();
         }
     }
 
-
     private void createHomeworks(String filename) throws Exception{
         Reader reader = new Reader(filename, dbApi);
-        if (!createTable(lessons)){
+        if (!createTable(homeworks)){
             reader.loadHomeworks();
         }
     }
 
-
-
-
+    private void createGroups(String filename) throws Exception{
+        Reader reader = new Reader(filename, dbApi);
+        if (!createTable(groups)){
+            reader.loadGroups();
+        }
+    }
 
 }

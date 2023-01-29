@@ -8,13 +8,19 @@ public class UI {
     DBApi dbApi;
     Scanner scanner;
     String name;
+    LoginUI loginUI;
 
 
     public UI(DBApi dbApi) {
         this.dbApi = dbApi;
         this.scanner = new Scanner(System.in);
         this.name = "УниверУнивер";
-        LoginUI loginUI = new LoginUI(name, scanner, dbApi);
+        loginUI = new LoginUI(name, scanner, dbApi);
 
     }
+
+    public void run(){
+        loginUI.run();
+    }
+
 }

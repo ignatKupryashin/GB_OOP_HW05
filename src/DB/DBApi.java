@@ -80,7 +80,7 @@ public class DBApi {
     public void addHomework(int id, Homework homework){dataBase.getHomeworks().setData(id, homework);}
     public void addHomework(Homework homework){dataBase.getHomeworks().setData(homework);}
     public void addLesson(int id, Lesson lesson){dataBase.getLessons().setData(id, lesson);}
-    public void addLessons(Lesson lesson){dataBase.getLessons().setData(lesson);}
+    public void addLesson(Lesson lesson){dataBase.getLessons().setData(lesson);}
 
 
     public void setDiscipline(int id, Discipline discipline) {

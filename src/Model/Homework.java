@@ -1,12 +1,12 @@
 package Model;
 
-public class Homework {
+public class Homework implements Save{
     private int studentId;
     private int lessonId;
     private String homeWorkText;
     private Mark mark;
 
-    public Homework(int studentId, int lessonId, String tomeWorkText) {
+    public Homework(int studentId, int lessonId, String tomeWorkText){
         this.studentId = studentId;
         this.lessonId = lessonId;
         this.homeWorkText = tomeWorkText;
@@ -42,5 +42,10 @@ public class Homework {
 
     public void setMark(Mark mark) {
         this.mark = mark;
+    }
+
+    @Override
+    public String save() {
+        return String.format("%d - %d - %s", this.studentId, this.lessonId, this.homeWorkText);
     }
 }
